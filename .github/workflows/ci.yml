@@ -49,7 +49,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ap-south-1
       run: |
-        aws s3 cp dist/build.tar.gz s3://hanivenubucket/hanivenufolder --recursive
+        aws s3 cp dist/ s3://hanivenubucket/hanivenufolder --recursive
 
   deploy:
     runs-on: ubuntu-latest
