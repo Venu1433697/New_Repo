@@ -28,14 +28,9 @@ jobs:
 
     - name: List build directory (Optional for debug)
       run: ls -al dist
-    
-    - run: tar -czf build.tar.gz dist
 
-    - name: Upload build Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: build-artifact
-        path: build.tar.gz
+    - name: Install AWS CLI
+      run: sudo apt-get install -y awscli
 
 
     - name: Upload artifacts to S3
@@ -43,4 +38,4 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: |
-        aws s3 cp ./dist s3://vue-crash/dist --recursive
+        aws s3 cp ./dist s3://vue-crash/ --recursive
