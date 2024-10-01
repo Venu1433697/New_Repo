@@ -1,4 +1,4 @@
-name: Vue Crash CI
+name: Vue Crash CI/CD
 
 on:
   push:
@@ -28,6 +28,16 @@ jobs:
 
     - name: List build directory (Optional for debug)
       run: ls -al dist
+
+    - run: tar -czf build.tar.gz dist
+
+    - name: Upload build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-artifact
+        path: build.tar.gz
+
+
 
     - name: Install AWS CLI
       run: sudo apt-get install -y awscli
