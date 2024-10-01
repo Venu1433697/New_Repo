@@ -24,7 +24,7 @@ jobs:
       run: npm run build # or your specific build command
     
 
-    - run: tar -czf build.tar.gz build
+    - run: tar -czf build.tar.gz dist
 
     - name: Upload build Artifact
       uses: actions/upload-artifact@v4
