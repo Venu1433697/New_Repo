@@ -1,4 +1,5 @@
 name: Vue Crash CI
+
 on:
   push:
     branches: [ "main" ]
@@ -8,22 +9,26 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+
     steps: 
     - name: Checkout repository 
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2 
       
     - name: Set up Node.js 
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v2 
       with:
-        node-version: '14' # specify your Node.js version 
+        node-version: '16' # specify your Node.js version 
         
-    - name: Install dependencies
-      run: npm install
+    - name: Install dependencies 
+      run: npm install 
       
     - name: Build project 
       run: npm run build # or your specific build command
-    
 
+
+    - name: List build directory (Optional for debug)
+      run: ls -al dist
+    
     - run: tar -czf build.tar.gz dist
 
     - name: Upload build Artifact
@@ -31,4 +36,3 @@ jobs:
       with:
         name: build-artifact
         path: build.tar.gz
-
