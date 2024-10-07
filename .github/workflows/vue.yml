@@ -50,6 +50,7 @@ jobs:
         AWS_REGION: ap-south-1
       run: |
         aws s3 cp build.tar.gz s3://vue-crash-bucket/vue-folder/build.tar.gz
+        aws s3 cp appspec.yml s3://vue-crash-bucket/vue-folder/appspec.yml
 
   deploy:
     runs-on: ubuntu-latest
