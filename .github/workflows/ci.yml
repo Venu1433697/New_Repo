@@ -49,7 +49,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ap-south-1
       run: |
-        aws s3 cp build.tar.gz s3://hanivenus3bucket/hanivenufolder/build.tar.gz
+        aws s3 cp build.tar.gz s3://vue-crash-bucket/vue-folder/build.tar.gz
 
   deploy:
     runs-on: ubuntu-latest
@@ -78,4 +78,4 @@ jobs:
         aws deploy create-deployment \
           --application-name ${{ secrets.CODEDEPLOY_APPLICATION }} \
           --deployment-group-name ${{ secrets.CODEDEPLOY_DEPLOYMENT_GROUP }} \
-          --s3-location bucket=${{ secrets.S3_BUCKET }},key=hanivenufolder/build.tar.gz,bundleType=tgz
+          --s3-location bucket=${{ secrets.S3_BUCKET }},key=vue-folder/build.tar.gz,bundleType=tgz
