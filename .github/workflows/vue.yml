@@ -50,7 +50,7 @@ jobs:
         AWS_REGION: ap-south-1
       run: |
         aws s3 cp build.tar.gz s3://vue-crash-bucket/vue-folder/build.tar.gz
-        aws s3 cp appspec.yml s3://vue-crash-bucket/vue-folder/appspec.yml
+        
 
   deploy:
     runs-on: ubuntu-latest
@@ -80,5 +80,4 @@ jobs:
           --application-name ${{ secrets.CODEDEPLOY_APPLICATION }} \
           --deployment-group-name ${{ secrets.CODEDEPLOY_DEPLOYMENT_GROUP }} \
           --s3-location bucket=${{ secrets.S3_BUCKET }},key=vue-folder/build.tar.gz,bundleType=tgz
-          --s3-location bucket=${{ secrets.S3_BUCKET }},key=vue-folder/appspec.yml,bundleType=yml
           
