@@ -80,3 +80,5 @@ jobs:
           --application-name ${{ secrets.CODEDEPLOY_APPLICATION }} \
           --deployment-group-name ${{ secrets.CODEDEPLOY_DEPLOYMENT_GROUP }} \
           --s3-location bucket=${{ secrets.S3_BUCKET }},key=vue-folder/build.tar.gz,bundleType=tgz
+          --s3-location bucket=${{ secrets.S3_BUCKET }},key=vue-folder/appspec.yml,bundleType=yml
+          
